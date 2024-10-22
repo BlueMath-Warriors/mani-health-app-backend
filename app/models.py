@@ -49,7 +49,7 @@ class ReferralForm(models.Model):
     )
 
     def __str__(self):
-        return f"{self.first_name} - {self.claim_number}"
+        return f"{self.full_name} - {self.claim_number}"
 
 
 class MedicalRecords(models.Model):
@@ -59,4 +59,4 @@ class MedicalRecords(models.Model):
     media_file = models.FileField(upload_to="medical_records/")
 
     def __str__(self):
-        return f"Medical Records of {self.referral_form.first_name}"
+        return f"Medical Records of {self.referral_form.full_name}"
