@@ -45,5 +45,6 @@ class ContactUsView(CreateAPIView):
 
     def create(self, request, *args, **kwargs):
         response = super().create(request, *args, **kwargs)
-        self.contact_us_email(response.data)
+        """ TODO: un-comment when SMTP is enabled"""
+        # self.contact_us_email(response.data)
         return response
