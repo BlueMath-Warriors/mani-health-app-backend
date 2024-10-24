@@ -46,8 +46,8 @@ CORS_ALLOW_METHODS = ("POST",)
 
 CORS_ORIGIN_ALLOW_ALL = True
 CORS_ORIGIN_WHITELIST = (
-    "http://almaniinstitute.org",
     "https://almaniinstitute.netlify.app",
+    "http://almaniinstitute.org",
 )
 
 ROOT_URLCONF = "almani_backend.urls"
