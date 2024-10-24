@@ -14,7 +14,7 @@ SECRET_KEY = "i135e5^7$tod!)t(i6qs*1)c^8rnu+9l8ipd#&qby7akg%!+z("
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ["18.223.161.253", "127.0.0.1:8000"]
 
 
 # Application definition
@@ -27,6 +27,7 @@ INSTALLED_APPS = [
     "django.contrib.messages",
     "django.contrib.staticfiles",
     "rest_framework",
+    "corsheaders",
     "app",
 ]
 
@@ -38,7 +39,16 @@ MIDDLEWARE = [
     "django.contrib.auth.middleware.AuthenticationMiddleware",
     "django.contrib.messages.middleware.MessageMiddleware",
     "django.middleware.clickjacking.XFrameOptionsMiddleware",
+    "corsheaders.middleware.CorsMiddleware",
 ]
+
+CORS_ALLOW_METHODS = ("POST",)
+
+CORS_ORIGIN_ALLOW_ALL = True
+CORS_ORIGIN_WHITELIST = (
+    "http://almaniinstitute.org/",
+    "https://almaniinstitute.netlify.app/",
+)
 
 ROOT_URLCONF = "almani_backend.urls"
 
