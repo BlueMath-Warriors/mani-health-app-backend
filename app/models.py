@@ -1,7 +1,8 @@
 from django.db import models
+from common.models import TimeStampedModel
 
 
-class ReferralForm(models.Model):
+class ReferralForm(TimeStampedModel):
     # Choices for the position field
     ADJUSTER = "Adjuster"
     EMPLOYER_OR_LAWYER = "Employer_or_Lawyer"
@@ -52,7 +53,7 @@ class ReferralForm(models.Model):
         return f"{self.full_name} - {self.claim_number}"
 
 
-class MedicalRecords(models.Model):
+class MedicalRecords(TimeStampedModel):
     referral_form = models.ForeignKey(
         ReferralForm, related_name="media_files", on_delete=models.CASCADE
     )
@@ -60,3 +61,14 @@ class MedicalRecords(models.Model):
 
     def __str__(self):
         return f"Medical Records of {self.referral_form.full_name}"
+
+
+class ContactUs(TimeStampedModel):
+    first_name = models.CharField(max_length=100, verbose_name="First Name")
+    last_name = models.CharField(max_length=100, verbose_name="Last Name")
+    email = models.EmailField(verbose_name="Email")
+    phone_number = models.CharField(max_length=20, verbose_name="Phone Number")
+    message = models.TextField(verbose_name="Message")
+
+    def __str__(self):
+        return f"Message from {self.first_name} - {self.email}"

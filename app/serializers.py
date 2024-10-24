@@ -1,5 +1,5 @@
 from rest_framework import serializers
-from .models import ReferralForm, MedicalRecords
+from .models import ReferralForm, MedicalRecords, ContactUs
 
 
 class MedicalRecordsSerializer(serializers.ModelSerializer):
@@ -72,3 +72,9 @@ class ReferralFormCreateSerializer(serializers.ModelSerializer):
             )
 
         return referral_form
+
+
+class ContactUsSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = ContactUs
+        fields = ["id", "first_name", "last_name", "email", "phone_number", "message"]
