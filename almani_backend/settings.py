@@ -14,7 +14,7 @@ SECRET_KEY = "i135e5^7$tod!)t(i6qs*1)c^8rnu+9l8ipd#&qby7akg%!+z("
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ["18.223.161.253", "127.0.0.1:8000"]
+ALLOWED_HOSTS = ["18.223.161.253", "127.0.0.1"]
 
 
 # Application definition
@@ -48,6 +48,7 @@ CORS_ORIGIN_ALLOW_ALL = True
 CORS_ORIGIN_WHITELIST = (
     "http://almaniinstitute.org",
     "https://almaniinstitute.netlify.app",
+    "https://mani-health-app.vercel.app",
 )
 
 ROOT_URLCONF = "almani_backend.urls"
@@ -55,7 +56,7 @@ ROOT_URLCONF = "almani_backend.urls"
 TEMPLATES = [
     {
         "BACKEND": "django.template.backends.django.DjangoTemplates",
-        "DIRS": [],
+        "DIRS": [os.path.join(BASE_DIR, "templates")],
         "APP_DIRS": True,
         "OPTIONS": {
             "context_processors": [

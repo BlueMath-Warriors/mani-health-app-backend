@@ -1,6 +1,7 @@
 from sendgrid import SendGridAPIClient
 from sendgrid.helpers.mail import Mail, From
 from django.conf import settings
+import ssl
 
 
 def email_engine(
@@ -30,6 +31,8 @@ def email_engine(
     )
     """
 
+    # Modify SSL context for disabling SSL verification temporarily
+    ssl._create_default_https_context = ssl._create_unverified_context
     number_of_remaining = 0
     email_sent = False
 
